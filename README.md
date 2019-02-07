@@ -22,7 +22,28 @@ brew install ilogyou
 brew update
 ```
 
-## Test
+## Contribution
 
-To enable tests go to build settings and enable testability.
-Then select class you need to tests and add to target membership the test package.
+Install packages.
+
+```bash
+swift package update
+```
+
+Generate Xcodeproj file.
+
+```bash
+swift package generate-xcodeproj
+```
+
+Build.
+
+```bash
+swift build -c release -Xswiftc -static-stdlib
+```
+
+Test.
+
+```bash
+swift test
+```
