@@ -3,7 +3,7 @@ class Ilogyou < Formula
   homepage "https://github.com/leolgrn/iLogYou/"
   url "https://github.com/leolgrn/homebrew-ilogyou/releases/download/ilogyou/ilogyou.tar.gz"
   version "1.0.0"
-  sha256 "3f12b57f7cadd25666ca528ab4f8cfd60fbeb51b6d2b0c0a69037e990aeee5f4"
+  sha256 "fe7d4d454e591d80ad46e83839dbc0a7eb754b5dc5f951ff1680945686df5257"
 
   def install
     bin.install "iLogYou"
