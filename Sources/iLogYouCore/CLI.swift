@@ -1,10 +1,3 @@
-//
-//  CLI.swift
-//  CodeWriter
-//
-//  Created by Léo LEGRON on 15/01/2019.
-//
-
 import Foundation
 
 public class CLI {
@@ -14,6 +7,10 @@ public class CLI {
     
     public func welcome(){
         view.welcome()
+    }
+    
+    public func description(){
+        view.description()
     }
     
     public func askForProjectName(){
@@ -28,9 +25,16 @@ public class CLI {
         var askForFields = true
         while(askForFields){
             let fieldName = self.askForFieldName()
+            if(fieldName == ""){
+                askForFields = false
+                break
+            }
             let fieldType = self.askForFieldType()
+            if(fieldName == ""){
+                askForFields = false
+                break
+            }
             configuration.userClassFields[fieldName] = fieldType
-            askForFields = self.keepGoing()
         }
     }
     
@@ -52,16 +56,6 @@ public class CLI {
         }
     }
     
-    public func keepGoing() -> Bool {
-        view.askToKeepGoing()
-        if let input = readLine() {
-            if(input == "No"){
-                return false
-            }
-        }
-        return true
-    }
-    
     public func askForAPIAddress(){
         view.askForAPIAddress()
         if let input = readLine() {
@@ -69,8 +63,29 @@ public class CLI {
         }
     }
     
+    public func askForAPILoginRoute(){
+        view.askForAPILoginRoute()
+        if let input = readLine() {
+            configuration.APILoginRoute = input
+        }
+    }
+    
+    public func askForAPISignUpRoute(){
+        view.askForAPISignUpRoute()
+        if let input = readLine() {
+            configuration.APISignUpRoute = input
+        }
+    }
+    
+    public func askForAPIForgotPasswordRoute(){
+        view.askForAPIForgotPasswordRoute()
+        if let input = readLine() {
+            configuration.APIForgotPasswordRoute = input
+        }
+    }
+    
     
     public func end() {
-        print("Le projet \(configuration.projectName) a bien été généré ! 🙈🙉")
+        view.end(project: configuration.projectName)
     }
 }

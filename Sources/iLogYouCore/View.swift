@@ -10,20 +10,19 @@ import Foundation
 public class View {
     
     public func welcome(){
-        print()
-        print("Hi, thanks for using iLogYou !\n")
+        print("📱 Hi, welcome and thank you for using iLogYou ! 📱\n")
+    }
+    
+    public func description(){
+        print("... (TODO)")
     }
     
     public func askForProjectName(){
         print("Project name:")
     }
     
-    public func askForUserModelName(){
-        print("Name of user class:")
-    }
-    
     public func askForUserModelFields(){
-        print("What fields do you need ?")
+        print("Let's customize your User model !")
     }
     
     public func askForFieldName(){
@@ -31,27 +30,27 @@ public class View {
     }
     
     public func askForFieldType(){
-        print("Field Type : (String, Int, Double, ...)")
-    }
-    
-    public func askToKeepGoing(){
-        print("Keep going ? Yes / No")
-    }
-    
-    public func askForViews(){
-        print("What views do you need to implement in your app : (ex: 1,2,5)")
+        print("Field Type : String, Int, Double, ...")
     }
     
     public func askForAPIAddress(){
-        print("What's your API address ? (ip or domain name)")
+        print("What's your complete API address ? ex: https://ilogyou.com/")
     }
     
-    public func askForAPIRoutes(){
-        print("What are your API routes ? (ex: /login)")
+    public func askForAPILoginRoute(){
+        print("What's your login API route ? ex: user/login")
     }
     
-    public func askForRoute(view: String, method: String){
-        print("\(view) -> \(method) method :")
+    public func askForAPISignUpRoute(){
+        print("What's your sign up API route ? ex: user/create")
+    }
+    
+    public func askForAPIForgotPasswordRoute(){
+        print("What's your forgotten password API route ? ex: user/password")
+    }
+    
+    public func end(project: String){
+        print("Le projet \(project) a bien été généré ! 🙈🙉")
     }
     
 }
