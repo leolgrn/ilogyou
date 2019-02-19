@@ -2,7 +2,7 @@ os:
   - osx
 language: generic
 osx_image: xcode10.1
-script:
+8script:
  - swift build -c release -Xswiftc -static-stdlib
  - swift test
 deploy:
@@ -10,5 +10,3 @@ deploy:
   api_key: $GH_TOKEN
   file: "./.build/x86_64-apple-macosx10.10/release/iLogYou"
   skip_cleanup: true
-  on:
-    tags: true
