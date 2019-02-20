@@ -8,6 +8,7 @@ script:
 before_deploy:
   - git config --local user.name $GH_USERNAME
   - git config --local user.email $GH_EMAIL
+  - git tag v1.0.0
   - tar czvf ilogyou.tar.gz ./.build/x86_64-apple-macosx10.10/release/iLogYou
 deploy:
   provider: releases
