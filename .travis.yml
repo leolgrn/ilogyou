@@ -8,11 +8,11 @@ script:
 before_deploy:
   - git config --local user.name $GH_USERNAME
   - git config --local user.email $GH_EMAIL
-  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
-  - git tag $TRAVIS_TAG
+  - git tag ilogyou
   - tar czvf ilogyou.tar.gz ./.build/x86_64-apple-macosx10.10/release/iLogYou
 deploy:
   provider: releases
   api_key: $GH_TOKEN
   file: "ilogyou.tar.gz"
   skip_cleanup: true
+  overwrite: true
