@@ -1,5 +1,3 @@
-#!bin/bash
-
 if ! [[ $TRAVIS_TAG ]] 
 then
     git config --local user.name $GH_USERNAME 
