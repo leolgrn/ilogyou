@@ -12,8 +12,11 @@ before_deploy:
   - git tag $TRAVIS_TAG
   - cd .build/x86_64-apple-macosx10.10/release
   - tar czvf ilogyou.tar.gz iLogYou
+  - cd ../../..
+  - git clone https://github.com/leolgrn/homebrew-ilogyou.git
+  - cd homebrew-ilogyou
 deploy:
   provider: releases
   api_key: $GH_TOKEN
-  file: "ilogyou.tar.gz"
+  file: "../.build/x86_64-apple-macosx10.10/release/ilogyou.tar.gz"
   skip_cleanup: true
