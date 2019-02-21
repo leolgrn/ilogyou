@@ -6,21 +6,24 @@ script:
   - swift build -c release -Xswiftc -static-stdlib
   - swift test
 before_deploy:
-  - git config --local user.name $GH_USERNAME
-  - git config --local user.email $GH_EMAIL
-  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%H%M%S-%d%m%Y')}
-  - git tag $TRAVIS_TAG
-  - cd .build/x86_64-apple-macosx10.10/release
-  - tar czvf ilogyou.tar.gz iLogYou
-  - cd ../../..
-  - git clone https://github.com/leolgrn/homebrew-ilogyou.git
-  - cd homebrew-ilogyou
-  - touch test.swift
-  - cd ..
+  if ! [[ $TRAVIS_TAG ]] 
+  then
+    git config --local user.name $GH_USERNAME &&
+    git config --local user.email $GH_EMAIL &&
+    export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%H%M%S-%d%m%Y')} &&
+    git tag $TRAVIS_TAG &&
+    cd .build/x86_64-apple-macosx10.10/release &&
+    tar czvf ilogyou.tar.gz iLogYou
+  else
+    git clone https://github.com/leolgrn/homebrew-ilogyou.git
+    cd homebrew-ilogyou/Formula
+    touch test.swift
+    cd ..
+  fi
 deploy:
   - provider: releases
     api_key: $GH_TOKEN
-    file: ".build/x86_64-apple-macosx10.10/release/ilogyou.tar.gz"
+    file: "ilogyou.tar.gz"
     skip_cleanup: true
   - provider: pages
     local-dir: "homebrew-ilogyou"
