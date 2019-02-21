@@ -15,8 +15,18 @@ before_deploy:
   - cd ../../..
   - git clone https://github.com/leolgrn/homebrew-ilogyou.git
   - cd homebrew-ilogyou
+  - touch test.swift
+  - cd ..
 deploy:
-  provider: releases
-  api_key: $GH_TOKEN
-  file: "../.build/x86_64-apple-macosx10.10/release/ilogyou.tar.gz"
-  skip_cleanup: true
+  - provider: releases
+    api_key: $GH_TOKEN
+    file: ".build/x86_64-apple-macosx10.10/release/ilogyou.tar.gz"
+    skip_cleanup: true
+  - provider: pages
+    local-dir: "homebrew-ilogyou"
+    repo: "homebrew-ilogyou"
+    skip-cleanup: true
+    github-token: $GH_TOKEN
+    keep-history: true
+    on:
+      branch: master
