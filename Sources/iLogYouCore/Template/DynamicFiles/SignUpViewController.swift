@@ -22,8 +22,7 @@ public class SignUpViewController: DynamicFile {
         
             public var email: UITextField!
             public var password: UITextField!
-            \(getProperties())
-        
+        \(getProperties())
             var signUpButton: UIButton!
             var logInButton: UIButton!
         
@@ -68,7 +67,7 @@ public class SignUpViewController: DynamicFile {
                 self.view.addSubview(signUpButton)
         
                 logInButton = UIButton(type: .system)
-                logInButton.frame = CGRect(x: 0, y: (self.view.frame.height-200)/2 + \(String(self.height + 90)), width: self.view.frame.width, height: 64)
+                logInButton.frame = CGRect(x: 0, y: (self.view.frame.height-200)/2 + \(String(self.height)), width: self.view.frame.width, height: 64)
                 logInButton.setTitle("Already registered", for: .normal)
                 logInButton.setTitleColor(UIColor.init(red: CGFloat(30) / 255, green: CGFloat(144) / 255, blue: CGFloat(255) / 255, alpha: CGFloat(1)), for: .normal)
                 logInButton.titleLabel?.font = UIFont.systemFont(ofSize: 19)
@@ -118,23 +117,23 @@ public class SignUpViewController: DynamicFile {
         var properties = ""
         self.configuration.userClassFields.forEach { (name: String, type: String) in
             properties += """
-            public var \(name): UITextField!
-            
+                public var \(name): UITextField!\n
             """
         }
         return properties
     }
     
     private func getParameters() -> String {
-        var propertiesBinding = """
-        let email = self.email.text!
-        let password = self.password.text!
-
+        var propertiesBinding = ""
+        propertiesBinding += """
+        let email = self.email.text!\n
+        """
+        propertiesBinding += """
+                let password = self.password.text!\n
         """
         self.configuration.userClassFields.forEach { (name: String, type: String) in
             propertiesBinding += """
-            let \(name) = self.\(name).text!
-            
+                    let \(name) = self.\(name).text!\n
             """
         }
         var parameters = ""
@@ -142,24 +141,22 @@ public class SignUpViewController: DynamicFile {
         self.configuration.userClassFields.forEach { (name: String, type: String) in
             if( self.configuration.userClassFields.count == count){
                 parameters += """
-                "\(name)" : \(name)
+                            "\(name)" : \(name)
                 """
             } else {
                 parameters += """
-                "\(name)" : \(name),
-                
+                            "\(name)" : \(name),\n
                 """
             }
             count += 1
         }
         return """
         \(propertiesBinding)
-        
-        let parameters: Parameters = [
-            "email" : email,
-            "password": password,
-            \(parameters)
-        ]
+                let parameters: Parameters = [
+                    "email" : email,
+                    "password": password,
+        \(parameters)
+                ]
         """
     }
     
@@ -168,12 +165,12 @@ public class SignUpViewController: DynamicFile {
         self.configuration.userClassFields.forEach { (name: String, type: String) in
             textFields += """
             
-            \(name) = UITextField(frame: CGRect(x: 50, y: (self.view.frame.height-200)/2 + \(String(self.height)), width: self.view.frame.width - 100, height: 48))
-            \(name).placeholder = "\(name)"
-            \(name).borderStyle = .roundedRect
-            \(name).spellCheckingType = .no
-            \(name).returnKeyType = .done
-            self.view.addSubview(\(name))
+                    \(name) = UITextField(frame: CGRect(x: 50, y: (self.view.frame.height-200)/2 + \(String(self.height)), width: self.view.frame.width - 100, height: 48))
+                    \(name).placeholder = "\(name)"
+                    \(name).borderStyle = .roundedRect
+                    \(name).spellCheckingType = .no
+                    \(name).returnKeyType = .done
+                    self.view.addSubview(\(name))
             
             """
             self.height += 60

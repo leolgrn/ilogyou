@@ -17,10 +17,9 @@ public class UserModel: DynamicFile {
         
         class User {
         
-            \(getProperties())
-        
+        \(getProperties())
             public init(\(getInitProperties())){
-                \(getInit())
+        \(getInit())
             }
         
         }
@@ -31,8 +30,7 @@ public class UserModel: DynamicFile {
         var properties = ""
         self.configuration.userClassFields.forEach { (name: String, type: String) in
             properties += """
-            public var \(name): \(type)
-            
+                public var \(name): \(type)\n
             """
         }
         return properties
@@ -44,11 +42,15 @@ public class UserModel: DynamicFile {
         self.configuration.userClassFields.forEach { (name: String, type: String) in
             if(self.configuration.userClassFields.count == count){
                 properties += """
-                \(name): \(type)
+                 \(name): \(type)
+                """
+            } else if(count == 1){
+                properties += """
+                \(name): \(type),
                 """
             } else {
                 properties += """
-                \(name): \(type),
+                 \(name): \(type),
                 """
             }
             count += 1
@@ -58,11 +60,18 @@ public class UserModel: DynamicFile {
     
     private func getInit() -> String {
         var properties = ""
+        var count = 1
         self.configuration.userClassFields.forEach { (name: String, type: String) in
-            properties += """
-            self.\(name) = \(name)
-            
-            """
+            if(self.configuration.userClassFields.count == count){
+                properties += """
+                        self.\(name) = \(name)
+                """
+            } else {
+                properties += """
+                        self.\(name) = \(name)\n
+                """
+            }
+            count += 1
         }
         return properties
     }
