@@ -10,5 +10,5 @@ before_deploy:
 deploy:
   - provider: releases
     api_key: $GH_TOKEN
-    file: "ilogyou/.build/x86_64-apple-macosx10.10/release/ilogyou.tar.gz"
+    file: ".build/x86_64-apple-macosx10.10/release/ilogyou.tar.gz"
     skip_cleanup: true
