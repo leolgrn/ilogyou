@@ -48,7 +48,7 @@ public class XcodeProjGenerator {
             let xcodeproj = try projectGenerator.generateXcodeProject()
             try xcodeproj.write(path: Path("\(self.configuration.projectName)/\(self.configuration.projectName).xcodeproj"))
         } catch let error {
-            print("Error : \(error)")
+            print("Error while writing : \(error)")
         }
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 public class View {
     
     public func welcome(){
-        print("📱 Hi, welcome and thank you for using iLogYou ! 📱\n")
+        print("📱 Hi, welcome and thanks for using iLogYou ! 📱\n")
     }
     
     public func description(){

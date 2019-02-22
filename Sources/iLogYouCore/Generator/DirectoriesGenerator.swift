@@ -45,8 +45,8 @@ public class DirectoriesGenerator {
         self.directories.forEach { (directory) in
             do {
                 try FileManager.default.createDirectory(atPath: directory, withIntermediateDirectories: false, attributes: nil)
-            } catch let error as NSError {
-                print(error.localizedDescription);
+            } catch let error {
+                print("Error while writing : \(error)")
             }
         }
     }
