@@ -15,7 +15,14 @@ public final class iLogYou {
     }
     
     public func run() throws {
+
         let cli = CLI()
+        askForConfiguration(cli: cli)
+        genetareFiles(cli: cli)
+        cli.end()
+    }
+    
+    public func askForConfiguration(cli: CLI) {
         
         cli.welcome()
         cli.askForProjectName()
@@ -24,7 +31,10 @@ public final class iLogYou {
         cli.askForAPILoginRoute()
         cli.askForAPISignUpRoute()
         cli.askForAPIForgotPasswordRoute()
-        
+    }
+    
+    public func genetareFiles(cli: CLI) {
+    
         let directoriesGenerator = DirectoriesGenerator(configuration: cli.configuration)
         directoriesGenerator.generate()
         
@@ -36,7 +46,5 @@ public final class iLogYou {
         
         let xcodeProjGenerator = XcodeProjGenerator(configuration: cli.configuration)
         xcodeProjGenerator.generate()
-        
-        cli.end()
     }
 }

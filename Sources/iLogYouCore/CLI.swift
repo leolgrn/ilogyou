@@ -5,6 +5,14 @@ public class CLI {
     var configuration = Configuration()
     var view = View()
     
+    public init() {
+    
+    }
+    
+    public init(configuration: Configuration) {
+        self.configuration = configuration
+    }
+    
     public func welcome(){
         view.welcome()
     }
@@ -88,4 +96,5 @@ public class CLI {
     public func end() {
         view.end(project: configuration.projectName)
     }
+    
 }
