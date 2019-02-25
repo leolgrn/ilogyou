@@ -2,8 +2,10 @@ import Foundation
 
 public class CLI {
     
-    var configuration = Configuration()
-    var view = View()
+    public var configuration = Configuration()
+    public var view = View()
+    
+    public init(){}
     
     public func welcome(){
         view.welcome()

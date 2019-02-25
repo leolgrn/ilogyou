@@ -23,25 +23,24 @@ class TestUserModel: XCTestCase {
 
     func testCreateUserModelWith3Fields() {
         let configuration = Configuration()
-        configuration.userClassFields["email"] = "String"
-        configuration.userClassFields["password"] = "String"
+        configuration.userClassFields["username"] = "String"
+        configuration.userClassFields["lastname"] = "String"
         configuration.userClassFields["age"] = "Int"
         
         let userModel = UserModel(configuration: configuration)
         
+        XCTAssertTrue(userModel.content().contains("var username: String"))
+        XCTAssertTrue(userModel.content().contains("var lastname: String"))
         XCTAssertTrue(userModel.content().contains("var age: Int"))
-        XCTAssertTrue(userModel.content().contains("var email: String"))
-        XCTAssertTrue(userModel.content().contains("var password: String"))
     }
 
-    func testCreateUserModelWith1Fields() {
+    func testCreateUserModelWithNoFields() {
         let configuration = Configuration()
-        configuration.userClassFields["username"] = "String"
         
         let userModel = UserModel(configuration: configuration)
         
-        XCTAssertTrue(userModel.content().contains("var username: String"))
-        XCTAssertFalse(userModel.content().contains("var password: String"))
+        XCTAssertTrue(userModel.content().contains("var email: String"))
+        XCTAssertTrue(userModel.content().contains("var password: String"))
     }
 
 }
