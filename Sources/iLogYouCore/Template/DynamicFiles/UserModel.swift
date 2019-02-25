@@ -17,8 +17,12 @@ public class UserModel: DynamicFile {
         
         class User {
         
+            public var email: String
+            public var password: String
         \(getProperties())
-            public init(\(getInitProperties())){
+            public init(email: String, password: String, \(getInitProperties())){
+                self.email = email
+                self.password = password
         \(getInit())
             }
         
@@ -43,10 +47,6 @@ public class UserModel: DynamicFile {
             if(self.configuration.userClassFields.count == count){
                 properties += """
                  \(name): \(type)
-                """
-            } else if(count == 1){
-                properties += """
-                \(name): \(type),
                 """
             } else {
                 properties += """

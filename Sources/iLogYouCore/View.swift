@@ -10,11 +10,16 @@ import Foundation
 public class View {
     
     public func welcome(){
-        print("📱 Hi, welcome and thanks for using iLogYou ! 📱\n")
+        print("Hi, welcome and thanks for using iLogYou !\n")
     }
     
     public func description(){
-        print("... (TODO)")
+        print("""
+        By default the user model already contains:
+            - an e-mail address
+            - a password
+        So don't add these in your custom user model 🤗\n
+        """)
     }
     
     public func askForProjectName(){
@@ -50,7 +55,8 @@ public class View {
     }
     
     public func end(project: String){
-        print("Le projet \(project) a bien été généré ! 🙈🙉")
+        print("\nLe projet \(project) a bien été généré ! 🙈🙉")
+        print("To get started let's paste this command: cd \(project) && pod install && open .")
     }
     
 }

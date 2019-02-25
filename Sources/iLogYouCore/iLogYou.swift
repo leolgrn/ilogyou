@@ -25,6 +25,12 @@ public final class iLogYou {
         cli.askForAPISignUpRoute()
         cli.askForAPIForgotPasswordRoute()
         
+        generate(cli: cli)
+        
+        cli.end()
+    }
+    
+    public func generate(cli: CLI) {
         let directoriesGenerator = DirectoriesGenerator(configuration: cli.configuration)
         directoriesGenerator.generate()
         
@@ -36,7 +42,5 @@ public final class iLogYou {
         
         let xcodeProjGenerator = XcodeProjGenerator(configuration: cli.configuration)
         xcodeProjGenerator.generate()
-        
-        cli.end()
     }
 }
