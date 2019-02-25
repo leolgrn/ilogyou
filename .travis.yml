@@ -2,6 +2,9 @@ os:
   - osx
 language: generic
 osx_image: xcode10.1
+branches:
+  only:
+  - master
 script:
   - swift build -c release -Xswiftc -static-stdlib
   - swift test
