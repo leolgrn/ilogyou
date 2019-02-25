@@ -18,6 +18,7 @@ public final class iLogYou {
         let cli = CLI()
         
         cli.welcome()
+        cli.description()
         cli.askForProjectName()
         cli.askForUserModelFields()
         cli.askForAPIAddress()
