@@ -22,6 +22,7 @@ public class LoginViewController: StaticFile {
         var signUpButton: UIButton!
         var logInButton: UIButton!
         var forgotPasswordButton: UIButton!
+        var errorMessage: UILabel!
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -84,6 +85,14 @@ public class LoginViewController: StaticFile {
             label.textColor = UIColor.black
             label.font = UIFont.boldSystemFont(ofSize: 30)
             self.view.addSubview(label)
+
+            errorMessage = UILabel(frame: CGRect(x: 0, y: (self.view.frame.height-200)/2 + 200, width: self.view.frame.width, height: 48))
+            errorMessage.textAlignment = .center
+            errorMessage.isHidden = true
+            errorMessage.text = "email/password incorrect"
+            errorMessage.textColor = UIColor.red
+            errorMessage.font = UIFont.boldSystemFont(ofSize: 20)
+            self.view.addSubview(errorMessage)
         }
         
         @IBAction func logInButtonEvent(sender: UIButton){
@@ -95,14 +104,13 @@ public class LoginViewController: StaticFile {
             
             provider.login(email: email, password: password, callback: { statusCode in
                 
-                // execute the code in the main thread
                 DispatchQueue.main.async(execute: {
-                    if statusCode == 200 {
+                    if statusCode == 200 || statusCode == 201 {
                         let main = MainViewController()
                         self.navigationController?.pushViewController(main, animated: true)
                     }
                     else {
-                        print("error - status code : " + String(statusCode))
+                        self.errorMessage.isHidden = false
                     }
                 })
             })

@@ -35,16 +35,11 @@ public class ILogYouProvider: DynamicFile {
                 Alamofire.request(loginUrl, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
         
                     guard let statusCode = response.response?.statusCode else {
-                        callback(500)
-                        return
+                    callback(500)
+                    return
                     }
         
-                    if statusCode == 404 || statusCode == 503 || statusCode == 401 {
-                        callback(statusCode)
-                        return
-                    }
-        
-                    callback(200)
+                    callback(statusCode)
                 }
         
             }

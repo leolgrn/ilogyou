@@ -25,6 +25,7 @@ public class SignUpViewController: DynamicFile {
         \(getProperties())
             var signUpButton: UIButton!
             var logInButton: UIButton!
+            var errorMessage: UILabel!
         
             override func viewDidLoad() {
                 super.viewDidLoad()
@@ -80,6 +81,14 @@ public class SignUpViewController: DynamicFile {
                 label.textColor = UIColor.black
                 label.font = UIFont.boldSystemFont(ofSize: 30)
                 self.view.addSubview(label)
+        
+                errorMessage = UILabel(frame: CGRect(x: 0, y: (self.view.frame.height-200)/2 + \(String(self.height + 60)), width: self.view.frame.width, height: 48))
+                errorMessage.textAlignment = .center
+                errorMessage.isHidden = true
+                errorMessage.text = "email/password incorrect"
+                errorMessage.textColor = UIColor.red
+                errorMessage.font = UIFont.boldSystemFont(ofSize: 20)
+                self.view.addSubview(errorMessage)
             }
         
             @IBAction func signUpButtonEvent(sender: UIButton){
@@ -90,14 +99,13 @@ public class SignUpViewController: DynamicFile {
         
                 provider.signUp(parameters: parameters, callback: { statusCode in
         
-                    // execute the code in the main thread
                     DispatchQueue.main.async(execute: {
-                        if statusCode == 200 {
+                        if statusCode == 200 || statusCode == 201 {
                             let login = LoginViewController()
                             self.navigationController?.pushViewController(login, animated: true)
                         }
                         else {
-                            print("error - status code : " + String(statusCode))
+                            self.errorMessage.isHidden = false
                         }
                     })
                 })
