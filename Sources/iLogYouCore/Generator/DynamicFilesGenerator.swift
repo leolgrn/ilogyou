@@ -1,10 +1,3 @@
-//
-//  DynamicFilesGenerator.swift
-//  AEXML
-//
-//  Created by Léo LEGRON on 16/02/2019.
-//
-
 import Foundation
 import XcodeGenKit
 import ProjectSpec

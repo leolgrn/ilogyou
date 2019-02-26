@@ -1,10 +1,3 @@
-//
-//  TestAppDelegate.swift
-//  AEXML
-//
-//  Created by Léo LEGRON on 22/02/2019.
-//
-
 import XCTest
 import iLogYouCore
 

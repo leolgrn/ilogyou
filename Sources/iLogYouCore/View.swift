@@ -1,10 +1,3 @@
-//
-//  View.swift
-//  CodeWriter
-//
-//  Created by Léo LEGRON on 15/01/2019.
-//
-
 import Foundation
 
 public class View {

@@ -1,10 +1,3 @@
-//
-//  TestProjectGeneration.swift
-//  AEXML
-//
-//  Created by Léo LEGRON on 25/02/2019.
-//
-
 import XCTest
 import iLogYouCore
 

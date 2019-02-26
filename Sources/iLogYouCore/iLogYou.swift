@@ -1,10 +1,3 @@
-//
-//  iLogYou.swift
-//  iLogYou
-//
-//  Created by Léo LEGRON on 07/02/2019.
-//
-
 import Foundation
 
 public final class iLogYou {

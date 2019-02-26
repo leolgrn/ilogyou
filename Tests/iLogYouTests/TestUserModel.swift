@@ -1,10 +1,3 @@
-//
-//  TestUserModel.swift
-//  iLogYouTests
-//
-//  Created by pierre piron on 07/02/2019.
-//
-
 import XCTest
 import iLogYouCore
 
