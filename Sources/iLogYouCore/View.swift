@@ -27,7 +27,7 @@ public class View {
     }
     
     public func askForUserModelFields(){
-        print("Let's customize your User model !")
+        print("\nLet's customize your User model !")
     }
     
     public func askForFieldName(){

@@ -14,6 +14,7 @@ public class DirectoriesGenerator {
     public var viewDirectory = ""
     public var classDirectory = ""
     public var providerDirectory = ""
+    public var base = ""
 
     public var directories: [String] = []
 
@@ -27,6 +28,7 @@ public class DirectoriesGenerator {
         self.viewDirectory = "\(configuration.projectName)/\(configuration.projectName)/View"
         self.classDirectory = "\(configuration.projectName)/\(configuration.projectName)/Model/Class"
         self.providerDirectory = "\(configuration.projectName)/\(configuration.projectName)/Model/Provider"
+        self.base = "\(configuration.projectName)/\(configuration.projectName)/View/Base.lproj"
 
         self.directories = [
             self.projectDirectory,
@@ -37,7 +39,8 @@ public class DirectoriesGenerator {
             self.modelDirectory,
             self.viewDirectory,
             self.classDirectory,
-            self.providerDirectory
+            self.providerDirectory,
+            self.base
         ]
     }
 

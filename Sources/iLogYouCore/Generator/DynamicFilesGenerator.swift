@@ -18,6 +18,7 @@ public class DynamicFilesGenerator {
     public var userModel: UserModel
     public var iLogYouProvider: ILogYouProvider
     public var splashScreenViewControllerXib: SplashScreenViewControllerXib
+    public var launchScreen: LaunchScreen
     
     public var dynamicFiles: [DynamicFile] = []
     
@@ -28,6 +29,7 @@ public class DynamicFilesGenerator {
         self.userModel = UserModel(configuration: configuration)
         self.iLogYouProvider = ILogYouProvider(configuration: configuration)
         self.splashScreenViewControllerXib = SplashScreenViewControllerXib(configuration: configuration)
+        self.launchScreen = LaunchScreen(configuration: configuration)
         
         self.dynamicFiles = [
             self.podFile,
@@ -35,7 +37,8 @@ public class DynamicFilesGenerator {
             self.signUpViewController,
             self.userModel,
             self.iLogYouProvider,
-            self.splashScreenViewControllerXib
+            self.splashScreenViewControllerXib,
+            self.launchScreen
         ]
     }
     
