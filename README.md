@@ -1,5 +1,7 @@
 # iLogYou
 
+[![Build Status](https://travis-ci.org/leolgrn/ilogyou.svg?branch=master)](https://travis-ci.org/leolgrn/ilogyou)
+
 Swift Framework for membership handling.
 
 ## Installation
